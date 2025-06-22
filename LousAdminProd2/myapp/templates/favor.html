@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Favorite</title>
+    <link rel="stylesheet" href="{% static 'favor.css' %}?v1.1">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+            rel="stylesheet"/>
+</head>
+<body>
+<div class="overlay" id="overlay"></div>
+
+<!-- Header -->
+<header class="header1">
+    <a href="/" class="logo1">Vibe & Vogue</a>
+    <ul class="navmenu1">
+        <li><a class="item active" href="/#home">Home</a></li>
+        <li><a class="item" href="/#products">Products</a></li>
+        <li><a class="item" href="/#categories">Categories</a></li>
+        <li><a class="item" href="/#about">About Us</a></li>
+    </ul>
+    <div class="nav-icon1">
+        <a href="#" class="search1"><i class='bx bx-search'></i></a>
+        <a href="/prof-page/"><i class='bx bx-user active'></i></a>
+        <a href="/favor-me/"><i class='bx bx-heart'></i></a>
+        <a href="/cart/" class="cart-icon">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" fill="none">
+                <path stroke="currentColor" stroke-width="1.5"
+                      d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5"></path>
+            </svg>
+            <span class="cart-count">3</span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+</header>
+
+<div class="header">
+    <div class="header-content">
+        <h1 class="header-title">Favorites</h1>
+        <nav class="nav">
+            <button class="nav-item" onclick="window.location.href='/prof-page/';">
+                <span>Profile</span>
+            </button>
+            <button class="nav-item" onclick="window.location.href='/orders/';">
+                <span>Orders</span>
+            </button>
+            <button class="nav-item active" onclick="window.location.href='/favor-me/';">
+                <span>Favorites</span>
+            </button>
+            <button class="nav-item" onclick="window.location.href='/payments-for-me/';">
+                <span>Payments</span>
+            </button>
+        </nav>
+    </div>
+</div>
+
+
+<div class="header2">
+    <h1 class="head2-title">Favorites</h1>
+</div>
+
+<!-- First Page -->
+<div class="search-overlay" id="searchOverlay">
+    <div class="close-icon" id="close-icon">
+        <i class='bx bx-x'></i>
+    </div>
+    <div class="logo-box">
+        <a href="/" class="logo-box1">Vibe & Vogue</a>
+    </div>
+    <div class="search2">
+        <input type="text" placeholder="Search..." id="searchInput">
+        <button class="clear-btn" id="clearBtn">Delete</button>
+    </div>
+
+    <div class="popular-queries">
+        <p>Popular Search Terms</p>
+        <ul>
+            <li class="search-item" data-query="bag">bag</li>
+            <li class="search-item" data-query="cosmetic bag">cosmetic bag</li>
+            <li class="search-item" data-query="backpack">backpack</li>
+            <li class="search-item" data-query="strap">strap</li>
+            <li class="search-item" data-query="sneakers">sneakers</li>
+        </ul>
+    </div>
+
+    <h1 class="new-class-arriv">New Arrivals</h1>
+    <div class="products1">
+        {% for product in new_arrivals %}
+        <div class="product-card1">
+            <div class="image-container1">
+                <a href="{% url 'product_detail' product.pk %}">
+                    <img src="{{ product.get_image }}" alt="{{ product.title }}" loading="lazy">
+                </a>
+                <div class="favor-btn1">
+                    <a href="#" class="favorite-btn" data-id="{{ product.id }}">
+                        <i class='bx bx-heart'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="cont-des1">
+                <h2>
+                    <a href="{% url 'product_detail' product.pk %}">{{ product.title }}</a>
+                </h2>
+                <p class="price1">${{ product.price }}</p>
+            </div>
+            <p class="description1">{{ product.description }}</p>
+            <span class="add-to-bag1" data-product-id="{{ product.id }}">Add to Bag</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="side-menu" id="side-menu">
+    <div class="close-icon" id="close1"><i class='bx bx-x'></i></div>
+
+    {% if user.is_authenticated %}
+    <div class="profile">
+        {% if profile.profile_image %}
+        <img src="{{ profile.profile_image.url }}" alt="Profile" class="avatar">
+        {% else %}
+        <img src="{% static 'image/Profile.png' %}" alt="Profile" class="avatar">
+        {% endif %}
+        <a href="/prof-page/"><h2>{{ user.first_name }} {{ user.last_name|slice:":1" }}.</h2></a>
+    </div>
+    {% endif %}
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for products">
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="ss_men_cont">
+
+    </div>
+    <ul class="side-menu-content">
+        <li><a href="/">Home<i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="/">Products<i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="/">Categories<i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="/">About Us<i class="fas fa-chevron-right"></i></a></li>
+    </ul>
+    <br>
+    <br>
+    <div class="menu-message">
+        <h3>Welcome to <b style="color: #282828e4;">Vibe & Vogue</b></h3>
+        <p>Get exclusive access to new collections, special discounts, and more by registering today! Already a
+            member?</p>
+        {% if not user.is_authenticated %}
+        <br>
+        <div class="link">
+            <a href="{% url 'login' %}" class="login-button">Sign In</a>
+            <a href="{% url 'register' %}" class="register-button">Sign Up</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<div class="products" id="products-container">
+    {% include 'partials/favor_products.html' %}
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!-- Footer -->
+<footer>
+    <div class="main-content">
+        <div class="left-box">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="/favor-me/">Favorite</a></li>
+            </ul>
+        </div>
+
+        <div class="center-box">
+            <h1>Vibe & Vogue</h1>
+        </div>
+
+        <div class="border-top">
+            © 2025 Company, Inc. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    const navLinks = document.querySelectorAll(".navmenu1 .item");
+
+navLinks.forEach(link => {
+link.addEventListener("click", function () {
+navLinks.forEach(item => item.classList.remove("active"));
+this.classList.add("active");
+});
+});
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+const reloadProducts = () => {
+fetch('/reload_favor_products/')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('products-container');
+    container.innerHTML = data.html;
+    attachDeleteEvents();  // перевстановити обробники подій
+  });
+};
+
+const attachDeleteEvents = () => {
+document.querySelectorAll('.delete-product').forEach(button => {
+  button.addEventListener('click', function () {
+    const productId = this.getAttribute('data-product-id');
+
+    fetch(`/delete_favor_product/${productId}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        reloadProducts(); // перезавантажити продукти непомітно
+      } else {
+        alert('Error: ' + data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+});
+};
+
+attachDeleteEvents(); // запускаємо при першому завантаженні
+});
+
+
+
+
+
+
+
+
+   document.addEventListener("DOMContentLoaded", () => {
+ const header1 = document.querySelector(".header1"); // Для .header1
+ const header = document.querySelector(".header");   // Для .header
+ const menuIcon = document.getElementById("menu-icon");
+ const sideMenu = document.getElementById("side-menu");
+ const overlay = document.getElementById("overlay");
+ const close1 = document.getElementById("close1");
+ const searchIcon = document.querySelector(".search1");
+ const searchBox = document.querySelector(".search-box");
+ const searchOverlay = document.getElementById("searchOverlay");
+
+ let isMenuOpen = false;
+
+ // Завжди залишаємо клас "sticky" для початкового кольору
+ header1.classList.add("sticky");
+ header.classList.add("sticky");
+
+ // Відкриття меню
+ menuIcon.addEventListener("click", () => {
+   sideMenu.classList.add("active");
+   overlay.style.display = "block";
+   document.body.classList.add("no-scroll");
+   header1.classList.add("menu-open"); // Зміна кольору для .header1
+   header.classList.add("menu-open");   // Зміна кольору для .header
+   isMenuOpen = true;
+ });
+
+ // Закриття меню (по кліку на overlay або хрестик)
+ const closeMenu = () => {
+   sideMenu.classList.remove("active");
+   overlay.style.display = "none";
+   document.body.classList.remove("no-scroll");
+   header1.classList.remove("menu-open"); // Повернення до базового кольору для .header1
+   header.classList.remove("menu-open");   // Повернення до базового кольору для .header
+   isMenuOpen = false;
+ };
+
+ close1.addEventListener("click", closeMenu);
+ overlay.addEventListener("click", closeMenu);
+
+ // Відкриття пошуку
+ const openSearchOverlay = () => {
+   closeMenu(); // Закриваємо меню перед пошуком
+   searchOverlay.style.display = "flex";
+   setTimeout(() => {
+     searchOverlay.style.top = "0";
+   }, 10);
+ };
+
+ searchIcon.addEventListener("click", openSearchOverlay);
+ searchBox.addEventListener("click", openSearchOverlay);
+
+ // Закриття пошуку
+ const closeSearch = () => {
+   searchOverlay.style.top = "-100%";
+   setTimeout(() => {
+     searchOverlay.style.display = "none";
+   }, 500);
+ };
+
+ searchOverlay.addEventListener("click", closeSearch);
+});
+
+
+
+
+
+
+
+
+const searchInput = document.getElementById('searchInput');
+const clearBtn = document.getElementById('clearBtn');
+
+// Очищаємо поле пошуку при натисканні на кнопку
+clearBtn.addEventListener('click', () => {
+ searchInput.value = ''; // Очищаємо значення у полі вводу
+});
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+ const searchInput = document.getElementById('searchInput');
+ const searchBox = document.querySelector('.search-box');
+ const searchBtn = document.getElementById('searchBtn');
+ const clearBtn = document.getElementById('clearBtn');
+ const searchItems = document.querySelectorAll('.popular-queries .search-item');
+
+ // При натисканні на search-box ставимо курсор у поле вводу
+ searchBox.addEventListener('click', () => {
+     searchInput.focus();
+ });
+
+ // Натискання на популярні запити -> заповнює поле пошуку
+ searchItems.forEach(item => {
+     item.addEventListener('click', () => {
+         const query = item.getAttribute('data-query');
+         searchInput.value = query;
+     });
+ });
+
+ // Кнопка очищення поля пошуку
+ if (clearBtn) {
+     clearBtn.addEventListener('click', () => {
+         searchInput.value = '';
+     });
+ }
+
+ // Кнопка пошуку -> перенаправляє на сторінку результатів
+ searchBtn.addEventListener('click', () => {
+     const query = searchInput.value.trim();
+     if (query) {
+         window.location.href = `/search?query=${encodeURIComponent(query)}`;
+     }
+ });
+
+ // Додаємо можливість натискати Enter для пошуку
+ searchInput.addEventListener('keypress', (event) => {
+     if (event.key === 'Enter') {
+         searchBtn.click(); // Викликаємо клік на кнопці пошуку
+     }
+ });
+});
+
+
+
+window.addEventListener("beforeunload", function () {
+ sessionStorage.setItem("scrollPosition", window.scrollY);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+ const savedScrollTop = sessionStorage.getItem("scrollPosition");
+ if (savedScrollTop !== null) {
+   setTimeout(() => {
+     window.scrollTo(0, parseInt(savedScrollTop, 10));
+   }, 0);
+ }
+
+ let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
+ let currentOffset = 0;
+ let subCurrentOffset = 0;
+ const mainHeader = document.querySelector(".header1");
+ const subHeader = document.querySelector(".header");
+ const headerTitle = document.querySelector(".header-title");
+ let isScrollingDown = lastScrollTop > 50;
+ let isAnimating = false;
+
+ function animateHeaders(targetOffsetMain, targetOffsetSub) {
+   if (isAnimating) return;
+   isAnimating = true;
+
+   function step() {
+     let diffMain = targetOffsetMain - currentOffset;
+     let diffSub = targetOffsetSub - subCurrentOffset;
+
+     if (Math.abs(diffMain) < 1 && Math.abs(diffSub) < 1) {
+       currentOffset = targetOffsetMain;
+       subCurrentOffset = targetOffsetSub;
+       mainHeader.style.transform = `translateY(${currentOffset}px)`;
+       subHeader.style.transform = `translateY(${subCurrentOffset}px)`;
+       isAnimating = false;
+       return;
+     }
+
+     let speedMain = 0.4;
+     let speedSub = 0.4;
+
+     currentOffset += diffMain * speedMain;
+     subCurrentOffset += diffSub * speedSub;
+
+     mainHeader.style.transform = `translateY(${currentOffset}px)`;
+     subHeader.style.transform = `translateY(${subCurrentOffset}px)`;
+     requestAnimationFrame(step);
+   }
+
+   requestAnimationFrame(step);
+ }
+
+ function updateHeaderPadding(scrollTop) {
+   if (scrollTop > 50) {
+     subHeader.style.padding = "41px 0 20px 0";
+     subHeader.style.transform = "translateY(-80px)";
+   } else {
+     subHeader.style.padding = "70px 0 25px 0";
+     subHeader.style.transform = "translateY(0)";
+   }
+ }
+
+ updateHeaderPadding(lastScrollTop);
+ animateHeaders(isScrollingDown ? -100 : 0, isScrollingDown ? -80 : 0);
+
+ window.addEventListener("scroll", function () {
+   let scrollTop = window.scrollY || document.documentElement.scrollTop;
+   sessionStorage.setItem("scrollPosition", scrollTop);
+
+   updateHeaderPadding(scrollTop);
+
+   if (scrollTop > lastScrollTop && scrollTop > 100) {
+     if (!isScrollingDown) {
+       animateHeaders(-100, -80);
+       isScrollingDown = true;
+       headerTitle.classList.add("hidden"); // Додаємо клас "hidden"
+     }
+   } else {
+     animateHeaders(0, 0);
+     isScrollingDown = false;
+     headerTitle.classList.remove("hidden"); // Видаляємо клас "hidden"
+   }
+
+   lastScrollTop = scrollTop;
+ });
+});
+</script>
+</body>
+</html>

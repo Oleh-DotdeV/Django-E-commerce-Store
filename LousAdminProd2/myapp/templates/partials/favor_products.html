@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Title</title>
+</head>
+<body>
+
+{% for product in favor_prod %}
+<div class="product-card">
+    <div class="image-container">
+        <img src="{{ product.get_image }}" alt="{{ product.title }}" loading="lazy">
+        <a class="heart-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                 fill="currentColor"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="delete-product" data-product-id="{{ product.id }}">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            </svg>
+        </a>
+    </div>
+    <div class="cont-des">
+        <h2>
+            {{ product.title }}
+        </h2>
+        <p class="price">${{ product.price }}</p>
+    </div>
+    <p class="description">{{ product.description }}</p>
+    <span class="add-to-bag" data-product-id="{{ product.id }}">Add to Bag</span>
+</div>
+{% endfor %}
+
+</body>
+</html>

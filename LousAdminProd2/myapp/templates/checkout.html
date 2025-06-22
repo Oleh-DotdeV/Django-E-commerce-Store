@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h2>Оформлення замовлення</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <h3>Ваші товари:</h3>
+  <ul>
+    {% for item in cart_items %}
+      <li>{{ item.product.title }} - Кількість: {{ item.quantity }}</li>
+    {% endfor %}
+  </ul>
+
+  <button type="submit">Підтвердити замовлення</button>
+</form>
+</body>
+</html>

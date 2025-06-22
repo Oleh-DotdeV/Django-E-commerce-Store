@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Authentication - Verify Phone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'reg-logi.css' %}">
+    <style>
+        .popup {
+            display: block;
+            position: fixed;
+            top: 10px; /* зверху */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            z-index: 9999;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            animation: fadeOut 1s ease-out forwards;
+            animation-delay: 15s;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <!-- Auth Image -->
+        <div class="auth-image">
+            <div class="image-overlay">
+                <h2>Hello, Welcome!</h2>
+            </div>
+        </div>
+
+        <!-- Verify Phone Form -->
+        <div class="form-container">
+            <div class="form-content">
+                <h2>Verify your phone</h2>
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+
+                <!-- Спливаюче вікно для коду -->
+                {% if verification_code %}
+                <div id="verification-popup" class="popup">
+                    <p>Your verification code is: <strong>{{ verification_code }}</strong></p>
+                </div>
+                {% endif %}
+
+                <!-- Django Form Start -->
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="input-group">
+                        <label for="code">Verification Code</label>
+                        <input type="text" id="code" name="code" maxlength="6" required placeholder="Enter code">
+                    </div>
+
+                    <button type="submit" class="submit-button">Verify</button>
+                </form>
+                <!-- Django Form End -->
+
+                <p class="switch-text">
+                    Didn't receive the code?
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="switch-link">Resend code</button>
+                </form>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JS для показу спливаючого вікна -->
+<script>
+    window.onload = function() {
+        // Показуємо спливаюче вікно при завантаженні сторінки
+        var popup = document.getElementById("verification-popup");
+        popup.style.display = "block";
+
+        // Приховуємо вікно через 15 секунд
+        setTimeout(function() {
+            popup.style.display = "none";
+        }, 15000);  // 15000 мс = 15 секунд
+    };
+</script>
+
+</body>
+</html>

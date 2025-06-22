@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Authentication - Enter Phone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'reg-logi.css' %}">
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-card">
+        <!-- Auth Image -->
+        <div class="auth-image">
+            <div class="image-overlay">
+                <h2>Hello, Welcome!</h2>
+            </div>
+        </div>
+
+        <!-- Enter Phone Form -->
+        <div class="form-container">
+            <div class="form-content">
+                <h2>Enter your phone</h2>
+                <p class="subtitle">Please enter your phone number to verify your account</p>
+
+                <div class="separator">
+                    <span>or</span>
+                </div>
+
+                <!-- Django Form Start -->
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="input-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="text" id="phone_number" name="phone_number" required placeholder="e.g. +380123456789">
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Code</button>
+                </form>
+                <!-- Django Form End -->
+
+                <p class="switch-text">
+                    Already have an account?
+                    <a href="{% url 'login' %}" class="switch-link">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

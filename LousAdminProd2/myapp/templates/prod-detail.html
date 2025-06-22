@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.title }}</title>
+    <link rel="stylesheet" href="{% static 'prod.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+            rel="stylesheet"/>
+</head>
+<div class="overlay" id="overlay"></div>
+
+<!-- Header -->
+<header class="header1">
+    <a href="/" class="logo1">Vibe & Vogue</a>
+    <ul class="navmenu1">
+        <li><a class="item" href="/">Home</a></li>
+        <li><a class="item" href="#">Shop</a></li>
+        <li><a class="item" href="#">Product</a></li>
+        <li><a class="item" href="#">Contact Us</a></li>
+    </ul>
+    <div class="nav-icon1">
+        <a href="#" class="search1"><i class='bx bx-search'></i></a>
+        <a href="/prof-page/"><i class='bx bx-user'></i></a>
+        <a href="/favor-me/"><i class='bx bx-heart'></i></a>
+        <a href="/cart/" class="cart-icon active">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" fill="none">
+                <path stroke="currentColor" stroke-width="1.5"
+                      d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5"></path>
+            </svg>
+            <span class="cart-count">3</span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+</header>
+
+<!-- First Page -->
+<div class="search-overlay" id="searchOverlay">
+    <div class="close-icon" id="close-icon">
+        <i class='bx bx-x'></i>
+    </div>
+    <div class="logo-box">
+        <a href="/" class="logo-box1">Vibe & Vogue</a>
+    </div>
+    <div class="search2">
+        <input type="text" placeholder="Search..." id="searchInput">
+        <button class="clear-btn" id="clearBtn">Delete</button>
+    </div>
+
+    <div class="popular-queries">
+        <p>Popular Search Terms</p>
+        <ul>
+            <li class="search-item" data-query="bag">bag</li>
+            <li class="search-item" data-query="cosmetic bag">cosmetic bag</li>
+            <li class="search-item" data-query="backpack">backpack</li>
+            <li class="search-item" data-query="strap">strap</li>
+            <li class="search-item" data-query="sneakers">sneakers</li>
+        </ul>
+    </div>
+
+    <h1 class="new-class-arriv">New Arrivals</h1>
+    <div class="products">
+        {% for product in favor_prod %}
+        <div class="product-card" id="product-{{ product.id }}">
+            <div class="image-container">
+                <img src="{{ product.get_image }}" alt="{{ product.title }}" loading="lazy">
+                <div class="favor-btn">
+                    <a href="#"><i class='bx bx-heart'></i></a>
+                </div>
+            </div>
+            <div class="cont-des">
+                <h2>{{ product.title }}</h2>
+                <p class="price">${{ product.price }}</p>
+            </div>
+            <p class="description">{{ product.description }}</p>
+            <a class="add-to-bag">Add to Bag</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<div class="side-menu" id="side-menu">
+    <div class="close-icon" id="close1"><i class='bx bx-x'></i></div>
+    <div class="profile">
+        <img src="{% static 'image/W-pic.png' %}" alt="">
+        <a href="prof.html"><h2>Walter D.</h2></a>
+    </div>
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for products">
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <ul class="side-menu-content">
+        <li><a href="#">New <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Men <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Women <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Kids <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Sale <i class="fas fa-chevron-right"></i></a></li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="menu-message">
+        <h3>Welcome to <b style="color: #282828e4;">Vibe & Vogue</b></h3>
+        <p>Get exclusive access to new collections, special discounts, and more by registering today! Already a
+            member? </p>
+        <br>
+        <br>
+        <div class="link">
+            <a href="#" class="login-button">Sign In</a>
+            <a href="#" class="register-button">Sign Up</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+
+<div class="container">
+    <div class="product-container">
+        <div class="cont-prod">
+            <!-- Thumbnail Gallery (верхні зображення) -->
+            <div class="thumbnail-gallery">
+                {% for img_url in product.get_additional_images %}
+                <div class="thumbnail {% if forloop.first %}active{% endif %}" data-index="{{ forloop.counter0 }}">
+                    <img src="{{ img_url }}" alt="Thumbnail {{ forloop.counter }}">
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Main Image (нижнє головне зображення) -->
+            <div class="main-image">
+                <img id="featured-image" src="{{ product.get_image }}" alt="Main Product Image">
+            </div>
+        </div>
+
+
+        <!-- Product Details -->
+        <div class="product-info">
+            <div class="product-header">
+                <h1>{{ product.title }}</h1>
+            </div>
+
+            <div class="product-price">
+                <p class="price">${{ product.price }}</p>
+                <p class="tax-info">incl. of taxes<br>(Also includes all applicable duties)</p>
+            </div>
+
+            <div class="size-selection">
+                <div class="size-header">
+                    <h2>Size Select</h2>
+                    <button id="open-size-guide" class="size-guide">
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px"
+                             height="24px" fill="none">
+                            <path stroke="currentColor" stroke-width="1.5"
+                                  d="M21.75 10.5v6.75a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V10.5m3.308-2.25h12.885"></path>
+                            <path stroke="currentColor" stroke-width="1.5"
+                                  d="M15.79 5.599l2.652 2.65-2.652 2.653M8.21 5.599l-2.652 2.65 2.652 2.653M17.25 19v-2.5M12 19v-2.5M6.75 19v-2.5"></path>
+                        </svg>
+                        Size Guide
+                    </button>
+
+                    <!-- Модальне вікно -->
+                    <div id="size-guide-modal" class="modal">
+                        <div class="modal-content">
+                            <button class="close-btn">&times;</button>
+                            <h2>Size Guide</h2>
+
+                            <!-- Фото з вимірами -->
+                            <img src="{% static 'image/size-chart.jpg' %}" alt="Size Chart" class="size-chart-img">
+
+                            <!-- Таблиця розмірів -->
+                            <table class="size-table">
+                                <thead>
+                                <tr>
+                                    <th>Size</th>
+                                    <th>Chest (cm)</th>
+                                    <th>Waist (cm)</th>
+                                    <th>Sleeve Length (cm)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>S</td>
+                                    <td>92</td>
+                                    <td>78</td>
+                                    <td>60</td>
+                                </tr>
+                                <tr>
+                                    <td>M</td>
+                                    <td>96</td>
+                                    <td>82</td>
+                                    <td>61</td>
+                                </tr>
+                                <tr>
+                                    <td>L</td>
+                                    <td>102</td>
+                                    <td>88</td>
+                                    <td>62</td>
+                                </tr>
+                                <tr>
+                                    <td>XL</td>
+                                    <td>108</td>
+                                    <td>94</td>
+                                    <td>63</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="size-options">
+                    <button class="size-btn" data-size="XS">XS</button>
+                    <button class="size-btn" data-size="S">S</button>
+                    <button class="size-btn" data-size="M">M</button>
+                    <button class="size-btn" data-size="L">L</button>
+                    <button class="size-btn" data-size="XL">XL</button>
+                    <button class="size-btn" data-size="XXL">XXL</button>
+                </div>
+                <div>
+                    <p id="size-error" class="error-message">Size selection is required</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="add-to-cart" class="btn-primary">Add to Cart</button>
+
+                    <button class="btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                             class="icon">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                        </svg>
+                        Wishlist
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer>
+    <div class="main-content">
+        <div class="left-box">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Sale</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="center-box">
+            <h1>Vibe & Vogue</h1>
+        </div>
+
+        <div class="border-top">
+            © 2025 Company, Inc. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const menuIcon = document.getElementById("menu-icon");
+    const sideMenu = document.getElementById("side-menu");
+    const overlay = document.getElementById("overlay");
+    const closeIcon = document.getElementById("close-icon"); // Закриття пошуку
+    const close1 = document.getElementById("close1"); // Закриття меню
+    const header = document.querySelector(".header1");
+    const searchIcon = document.querySelector('.search1');
+    const searchBox = document.querySelector('.search-box');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const checkoutButton = document.querySelector('.checkout');
+
+    let isScrolled = false;
+
+    // Функція перевірки прокрутки
+    const checkScroll = () => {
+      if (window.scrollY > 0) {
+        header.classList.add("sticky");
+        isScrolled = true;
+      } else {
+        header.classList.remove("sticky");
+        isScrolled = false;
+      }
+    };
+
+
+    checkScroll();
+    window.addEventListener("scroll", checkScroll);
+
+    // Відкриття меню
+    menuIcon.addEventListener("click", () => {
+      sideMenu.classList.add("active");
+      overlay.style.display = "block";
+      document.body.classList.add("no-scroll");
+      header.classList.add("menu-open");
+
+      if (isScrolled) {
+        header.classList.add("menu-open");
+      }
+    });
+
+    // Закриття меню (хрестик або клік на overlay)
+    const closeMenu = () => {
+      sideMenu.classList.remove("active");
+      overlay.style.display = "none";
+      document.body.classList.remove("no-scroll");
+      header.classList.remove("menu-open");
+      if (isScrolled) {
+        header.classList.remove("menu-open");
+      }
+    };
+
+    close1.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    // Відкриття пошуку
+    const openSearchOverlay = () => {
+    closeMenu();
+    searchOverlay.style.display = 'flex';
+
+    if (checkoutButton) {
+      checkoutButton.style.transition = 'opacity 0.5s ease';
+      checkoutButton.style.opacity = '0';
+
+      setTimeout(() => {
+        checkoutButton.style.display = 'none';
+      }, 500);
+    }
+
+    setTimeout(() => {
+      searchOverlay.style.top = '0';
+    }, 10);
+  };
+
+  const closeSearchOverlay = () => {
+    searchOverlay.style.top = '-100%';
+
+    setTimeout(() => {
+      searchOverlay.style.display = 'none';
+
+      if (checkoutButton) {
+        checkoutButton.style.display = 'block';
+        checkoutButton.style.transition = 'opacity 0.3s ease';
+        // Після відображення робимо плавну появу
+        setTimeout(() => {
+          checkoutButton.style.opacity = '1';
+        }, 10);
+      }
+    }, 100);
+  };
+
+  searchIcon.addEventListener('click', openSearchOverlay);
+  searchBox.addEventListener('click', openSearchOverlay);
+  closeIcon.addEventListener("click", closeSearchOverlay);
+  });
+
+
+
+
+
+
+
+  const searchInput = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('clearBtn');
+
+  // Очищаємо поле пошуку при натисканні на кнопку
+  clearBtn.addEventListener('click', () => {
+    searchInput.value = ''; // Очищаємо значення у полі вводу
+  });
+
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const searchBox = document.querySelector('.search-box');
+    const searchBtn = document.getElementById('searchBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const searchItems = document.querySelectorAll('.popular-queries .search-item');
+
+    // При натисканні на search-box ставимо курсор у поле вводу
+    searchBox.addEventListener('click', () => {
+        searchInput.focus();
+    });
+
+    // Натискання на популярні запити -> заповнює поле пошуку
+    searchItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const query = item.getAttribute('data-query');
+            searchInput.value = query;
+        });
+    });
+
+    // Кнопка очищення поля пошуку
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+        });
+    }
+
+    // Кнопка пошуку -> перенаправляє на сторінку результатів
+    searchBtn.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+        if (query) {
+            window.location.href = `/search?query=${encodeURIComponent(query)}`;
+        }
+    });
+
+    // Додаємо можливість натискати Enter для пошуку
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            searchBtn.click(); // Викликаємо клік на кнопці пошуку
+        }
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+// Variables
+const thumbnails = document.querySelectorAll('.thumbnail');
+const featuredImage = document.getElementById('featured-image');
+const sizeButtons = document.querySelectorAll('.size-btn');
+const addToCartButton = document.getElementById('add-to-cart');
+const sizeError = document.getElementById('size-error');
+
+let selectedSize = null;
+
+const productImages = [
+  {% for img_url in product.get_additional_images %}
+    "{{ img_url }}"{% if not forloop.last %},{% endif %}
+  {% endfor %}
+];
+
+// Thumbnail click event
+thumbnails.forEach(thumbnail => {
+  thumbnail.addEventListener('click', function() {
+    // Update active thumbnail
+    thumbnails.forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+
+    // Update main image
+    const imageIndex = parseInt(this.getAttribute('data-index'));
+    featuredImage.src = productImages[imageIndex];
+  });
+});
+
+// Size selection
+sizeButtons.forEach(button => {
+  button.addEventListener('click', function() {
+    // Update selected size
+    sizeButtons.forEach(btn => btn.classList.remove('selected'));
+    this.classList.add('selected');
+
+    selectedSize = this.getAttribute('data-size');
+    sizeError.style.display = 'none';
+  });
+});
+
+// Add to cart
+addToCartButton.addEventListener('click', function() {
+  if (!selectedSize) {
+    sizeError.style.display = 'block';
+  } else {
+    alert(`Added size ${selectedSize} to cart!`);
+  }
+});
+
+// Hide error message initially
+sizeError.style.display = 'none';
+
+// Mobile swipe gallery (only for screens smaller than 900px)
+function initializeSwipeGallery() {
+  if (window.innerWidth < 900) {
+    let currentIndex = 0;
+    let isSwiping = false;  // Variable to prevent automatic swiping
+
+    // Function to update the main image and active thumbnail
+    function updateMainImage(index) {
+      featuredImage.src = productImages[index];
+      thumbnails.forEach(t => t.classList.remove('active'));
+      thumbnails[index].classList.add('active');
+    }
+
+    // Swipe handling
+    let touchStartX = 0;
+    featuredImage.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      isSwiping = true;  // Start swiping
+    });
+
+    featuredImage.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+
+      // Only allow swipe if no other swipe happened recently
+      if (isSwiping) {
+        if (touchStartX > touchEndX) {
+          // Swiped left
+          currentIndex = (currentIndex + 1) % productImages.length;
+        } else if (touchStartX < touchEndX) {
+          // Swiped right
+          currentIndex = (currentIndex - 1 + productImages.length) % productImages.length;
+        }
+
+        updateMainImage(currentIndex);
+        isSwiping = false;  // End swiping and lock the action until next interaction
+      }
+    });
+
+    // Initial image update
+    updateMainImage(currentIndex);
+  }
+}
+
+// Initialize swipe gallery
+initializeSwipeGallery();
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+const modal = document.getElementById("size-guide-modal");
+const openBtn = document.getElementById("open-size-guide");
+const closeBtn = document.querySelector(".close-btn");
+
+function disableScroll() {
+  document.documentElement.style.overflow = "hidden";
+}
+
+function enableScroll() {
+  document.documentElement.style.overflow = "";
+}
+
+function openModal() {
+  if (window.innerWidth > 900) {
+    modal.classList.add("side-panel"); // Додаємо клас для бічного меню
+  } else {
+    modal.classList.remove("side-panel");
+  }
+  modal.style.display = "flex";
+  disableScroll();
+}
+
+function closeModal() {
+  modal.style.display = "none";
+  enableScroll();
+}
+
+openBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+
+window.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+window.addEventListener("resize", function () {
+  if (modal.style.display === "flex") {
+    openModal(); // Оновлюємо стиль при зміні розміру екрану
+  }
+});
+});
+
+</script>
+</html>

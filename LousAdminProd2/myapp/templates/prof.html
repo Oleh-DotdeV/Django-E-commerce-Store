@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'prof.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+            rel="stylesheet"/>
+</head>
+<body>
+<div class="overlay" id="overlay"></div>
+
+<!-- Header -->
+<header class="header1">
+    <a href="/" class="logo1">Vibe & Vogue</a>
+    <ul class="navmenu1" id="navmenu">
+        <li><a class="item active" href="/">Home</a></li>
+        <li><a class="item" href="#">Shop</a></li>
+        <li><a class="item" href="#">Product</a></li>
+        <li><a class="item" href="#">Contact Us</a></li>
+    </ul>
+    <div class="nav-icon1">
+        <a href="/prof-page/"><i class='bx bx-user active'></i></a>
+        <a href="/favor-me/"><i class='bx bx-heart'></i></a>
+        <a href="/cart/" class="cart-icon">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" fill="none">
+                <path stroke="currentColor" stroke-width="1.5"
+                      d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 110 4.5H3.75v8.25a3.75 3.75 0 003.75 3.75h9a3.75 3.75 0 003.75-3.75V8.25H17.5"></path>
+            </svg>
+            <span class="cart-count">3</span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+</header>
+
+<!-- First Page -->
+<div class="search-overlay" id="searchOverlay">
+    <div class="close-icon" id="close-icon">
+        <i class='bx bx-x'></i>
+    </div>
+    <div class="logo-box">
+        <a href="/" class="logo-box1">Vibe & Vogue</a>
+    </div>
+    <div class="search2">
+        <input type="text" placeholder="Search..." id="searchInput">
+        <button class="clear-btn" id="clearBtn">Delete</button>
+    </div>
+
+    <div class="popular-queries">
+        <p>Popular Search Terms</p>
+        <ul>
+            <li class="search-item" data-query="bag">bag</li>
+            <li class="search-item" data-query="cosmetic bag">cosmetic bag</li>
+            <li class="search-item" data-query="backpack">backpack</li>
+            <li class="search-item" data-query="strap">strap</li>
+            <li class="search-item" data-query="sneakers">sneakers</li>
+        </ul>
+    </div>
+
+    <section class="shop">
+        <h1 class="section-title">New products</h1>
+        <div class="product-content">
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product1.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Casual Black Polo</h2>
+                <div class="price-title">
+                    <span class="price">$100</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product2.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Waterproof Hoodie</h2>
+                <div class="price-title">
+                    <span class="price">$50</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product3.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Blue Sweatshirt</h2>
+                <div class="price-title">
+                    <span class="price">$20</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product4.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Hooded Urban Jacket</h2>
+                <div class="price-title">
+                    <span class="price">$125</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product5.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Cold Wether Jacket</h2>
+                <div class="price-title">
+                    <span class="price">$147</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product6.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Sporty Jacket</h2>
+                <div class="price-title">
+                    <span class="price">$80</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product7.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Olive Heritage Hoodie</h2>
+                <div class="price-title">
+                    <span class="price">$62</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="img-box">
+                    <img src="{% static 'image/product8.jpg' %}" alt="">
+                </div>
+                <h2 class="product-title">Bright Horizon Polo</h2>
+                <div class="price-title">
+                    <span class="price">$70</span>
+                    <i class="ri-shopping-bag-line add-cart"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div class="side-menu" id="side-menu">
+    <div class="close-icon" id="close1"><i class='bx bx-x'></i></div>
+    <div class="profile">
+        <img src="{% static 'image/W-pic.png' %}" alt="">
+        <a href="prof.html"><h2>Walter D.</h2></a>
+    </div>
+    <ul class="side-menu-content">
+        <li><a href="#">New <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Men <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Women <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Kids <i class="fas fa-chevron-right"></i></a></li>
+        <li><a href="#">Sale <i class="fas fa-chevron-right"></i></a></li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="menu-message">
+        <h3>Welcome to <b style="color: #282828e4;">Vibe & Vogue</b></h3>
+        <p>Get exclusive access to new collections, special discounts, and more by registering today! Already a
+            member? </p>
+        <br>
+        <br>
+        <div class="link">
+            <a href="#" class="login-button">Sign In</a>
+            <a href="#" class="register-button">Sign Up</a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<div class="container">
+    <!-- Left Navigation -->
+    <nav class="sidebar">
+        <div class="menu-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="icon blue">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>Menu</span>
+        </div>
+
+        <div class="menu-items">
+            <button class="nav-item active" onclick="window.location.href='/prof-page/';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Profile</span>
+            </button>
+            <button class="nav-item" onclick="window.location.href='/orders/';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                    <path d="M3 6h18"></path>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span>Orders</span>
+            </button>
+            <button class="nav-item" onclick="window.location.href='/favor-me/';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+                </svg>
+                <span>Favorites</span>
+            </button>
+            <button class="nav-item pay" onclick="window.location.href='/pay/';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                    <line x1="2" x2="22" y1="10" y2="10"></line>
+                </svg>
+                <span>Payments</span>
+            </button>
+            <button class="nav-item admin" onclick="window.location.href='/admin/';">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a10 10 0 1 0 10 10H12V2zM21.18 8.02c-1-2.3-2.85-4.17-5.16-5.15"></path>
+                </svg>
+                <span>For Admin</span>
+            </button>
+        </div>
+
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button class="sign-out" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Sign out</span>
+            </button>
+        </form>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1>User Profile</h1>
+        <p class="subtitle">Manage your personal information and account security</p>
+
+        <div class="profile-container">
+            <div class="profile-grid">
+                <!-- Profile Card -->
+                <div class="profile-card">
+                    <div class="avatar-container">
+                        {% if profile.profile_image %}
+                        <img src="{{ profile.profile_image.url }}" alt="Profile" class="avatar">
+                        {% else %}
+                        <img src="{% static 'image/Profile.png' %}" alt="Profile" class="avatar">
+                        {% endif %}
+
+                        {% if profile.phone_verified %}
+                        <div class="verified-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                 stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="contact">
+                        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                        <p>{{ profile.phone_number }}</p>
+                    </div>
+
+                    <!-- General Information -->
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="info-section">
+                        <div class="card1">
+                            <h3>General Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" name="first_name" value="{{ user.first_name }}"
+                                           data-original="{{ user.first_name }}" class="name-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" name="last_name" value="{{ user.last_name }}"
+                                           data-original="{{ user.last_name }}" class="name-input">
+                                </div>
+                            </div>
+                            <div class="button-form">
+                                <button class="update-btn" type="submit" disabled>Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Security -->
+            <div class="card">
+                <h3>Security</h3>
+                <div class="security-items">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="security-item">
+                            <div class="security-field">
+                                <label class="label">Email</label>
+                                <div class="value-container">
+                                    <input type="email" class="security-input" name="email"
+                                           value="{{ user.email }}"
+                                           data-original="{{ user.email }}" readonly>
+                                    <a class="edit-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             viewBox="0 0 24 24"
+                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                             stroke-linejoin="round">
+                                            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3Z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="button-group hidden">
+                                    <button type="submit" class="save-btn" name="save_btn" value="true">Save</button>
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="separator"></div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="security-item">
+                            <div class="security-field">
+                                <label class="label">Password</label>
+                                <div class="value-container">
+                                    <!-- Спочатку показуємо фейкові зірочки -->
+                                    <input type="password"
+                                           class="security-input"
+                                           name="new_password"
+                                           id="password"
+                                           value="********"
+                                           placeholder=""
+                                           readonly>
+
+                                    <!-- Показати/сховати пароль -->
+                                    <a type="button" class="toggle-password-btn hidden" onclick="togglePassword()">
+                                        <img src="{% static 'image/eye-closed.png' %}" alt="Eye closed"
+                                             class="eye-closed">
+                                        <img src="{% static 'image/eye-open.png' %}" alt="Eye open"
+                                             class="eye-open hidden">
+                                    </a>
+
+                                    <!-- Кнопка редагування -->
+                                    <a type="button" class="edit-btn" onclick="enablePasswordEdit()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3Z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+
+                                <div class="button-group hidden" id="save-cancel-group">
+                                    <button type="submit" class="save-btn">Save</button>
+                                    <button type="button" class="cancel-btn" onclick="cancelPasswordEdit()">Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <div class="separator"></div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="security-item">
+                            <div class="security-field">
+                                <label class="label">Phone</label>
+                                <div class="value-container">
+                                    <input type="tel" class="security-input"
+                                           name="phone_number"
+                                           value="{{ profile.phone_number }}"
+                                           data-original="{{ profile.phone_number }}" readonly>
+                                    <a class="edit-btn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                             viewBox="0 0 24 24"
+                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                             stroke-linejoin="round">
+                                            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3Z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="button-group hidden">
+                                    <button type="submit" class="save-btn" name="save_btn" value="true">Save</button>
+                                    <button type="button" class="cancel-btn">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- Footer -->
+<footer>
+  <div class="main-content2">
+    <div class="left-box">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="center-box">
+      <h1>Vibe & Vogue</h1>
+    </div>
+
+    <div class="border-top">
+      © 2025 Company, Inc. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+
+
+<script defer>
+    function enablePasswordEdit() {
+        const input = document.getElementById("password");
+        const btnGroup = document.getElementById("save-cancel-group");
+
+        // Очистити значення, зробити доступним для редагування
+        input.value = "";
+        input.placeholder = "Enter new password";
+        input.removeAttribute("readonly");
+
+        btnGroup.classList.remove("hidden");
+    }
+
+
+
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", function() {
+      if (this.window.scrollY > 0) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuIcon = document.getElementById("menu-icon");
+      const sideMenu = document.getElementById("side-menu");
+      const overlay = document.getElementById("overlay");
+      const closeIcon = document.getElementById("close-icon"); // Закриття пошуку
+      const close1 = document.getElementById("close1"); // Закриття меню
+      const header = document.querySelector(".header1");
+      const searchIcon = document.querySelector('.search1');
+      const searchBox = document.querySelector('.search-box');
+      const searchOverlay = document.getElementById('searchOverlay');
+
+      let isScrolled = false;
+
+      // Функція перевірки прокрутки
+      const checkScroll = () => {
+        if (window.scrollY > 0) {
+          header.classList.add("sticky");
+          isScrolled = true;
+        } else {
+          header.classList.remove("sticky");
+          isScrolled = false;
+        }
+      };
+
+      checkScroll();
+      window.addEventListener("scroll", checkScroll);
+
+      // Відкриття меню
+      menuIcon.addEventListener("click", () => {
+        sideMenu.classList.add("active");
+        overlay.style.display = "block";
+        document.body.classList.add("no-scroll");
+
+        if (isScrolled) {
+          header.classList.add("menu-open");
+        }
+      });
+
+      // Закриття меню (хрестик або клік на overlay)
+      const closeMenu = () => {
+        sideMenu.classList.remove("active");
+        overlay.style.display = "none";
+        document.body.classList.remove("no-scroll");
+        if (isScrolled) {
+          header.classList.remove("menu-open");
+        }
+      };
+
+      close1.addEventListener("click", closeMenu);
+      overlay.addEventListener("click", closeMenu);
+
+      // Відкриття пошуку
+      const openSearchOverlay = () => {
+        closeMenu(); // Закриваємо меню перед відкриттям пошуку
+        searchOverlay.style.display = 'flex';
+        setTimeout(() => {
+          searchOverlay.style.top = '0';
+        }, 10);
+      };
+
+      searchIcon.addEventListener('click', openSearchOverlay);
+      searchBox.addEventListener('click', openSearchOverlay);
+
+      // Закриття пошуку
+      closeIcon.addEventListener("click", () => {
+        searchOverlay.style.top = '-100%';
+        setTimeout(() => {
+          searchOverlay.style.display = 'none';
+        }, 500);
+      });
+    });
+
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+
+    // Очищаємо поле пошуку при натисканні на кнопку
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = ''; // Очищаємо значення у полі вводу
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const searchBox = document.querySelector('.search-box');
+      const searchBtn = document.getElementById('searchBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const searchItems = document.querySelectorAll('.popular-queries .search-item');
+
+      // При натисканні на search-box ставимо курсор у поле вводу
+      searchBox.addEventListener('click', () => {
+          searchInput.focus();
+      });
+
+      // Натискання на популярні запити -> заповнює поле пошуку
+      searchItems.forEach(item => {
+          item.addEventListener('click', () => {
+              const query = item.getAttribute('data-query');
+              searchInput.value = query;
+          });
+      });
+
+      // Кнопка очищення поля пошуку
+      if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+              searchInput.value = '';
+          });
+      }
+
+      // Кнопка пошуку -> перенаправляє на сторінку результатів
+      searchBtn.addEventListener('click', () => {
+          const query = searchInput.value.trim();
+          if (query) {
+              window.location.href = `/search?query=${encodeURIComponent(query)}`;
+          }
+      });
+
+      // Додаємо можливість натискати Enter для пошуку
+      searchInput.addEventListener('keypress', (event) => {
+          if (event.key === 'Enter') {
+              searchBtn.click(); // Викликаємо клік на кнопці пошуку
+          }
+      });
+    });
+
+
+
+
+   document.addEventListener("DOMContentLoaded", function () {
+    const nameInputs = document.querySelectorAll('.name-input');  // Ім'я і прізвище
+    const updateButton = document.querySelector('.update-btn');  // Кнопка для збереження
+
+    // Функція для перевірки змін в полях
+    function checkInputChanges() {
+        let hasChanges = false;
+
+        nameInputs.forEach(input => {
+            const originalValue = input.dataset.original.trim();
+            const currentValue = input.value.trim();
+
+            if (originalValue !== currentValue) {
+                hasChanges = true; // Якщо є зміни
+            }
+        });
+
+        // Активуємо/деактивуємо кнопку збереження
+        updateButton.disabled = !hasChanges;
+        updateButton.style.backgroundColor = hasChanges ? 'rgb(38 38 38)' : '';
+        updateButton.style.color = hasChanges ? 'white' : '';
+        updateButton.style.cursor = hasChanges ? 'pointer' : 'not-allowed';
+    }
+
+    // Додаємо слухачі подій для полів
+    nameInputs.forEach(input => {
+        input.addEventListener('input', checkInputChanges);  // Перевіряємо зміни при кожному введенні
+    });
+});
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.security-item').forEach(item => {
+        const input = item.querySelector('.security-input');
+        const editBtn = item.querySelector('.edit-btn');
+        const buttonGroup = item.querySelector('.button-group');
+        const togglePasswordBtn = item.querySelector('.toggle-password-btn');
+
+        // Обробник для натискання на кнопку "Олівець" (редагування)
+        editBtn.addEventListener('click', () => {
+            // Закриваємо всі відкриті елементи перед відкриттям нового
+            document.querySelectorAll('.security-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherInput = otherItem.querySelector('.security-input');
+                    const otherButtonGroup = otherItem.querySelector('.button-group');
+                    const otherTogglePasswordBtn = otherItem.querySelector('.toggle-password-btn');
+
+                    otherInput.readOnly = true;
+                    otherButtonGroup.classList.add('hidden');
+                    if (otherTogglePasswordBtn) otherTogglePasswordBtn.classList.add('hidden');
+                }
+            });
+
+            // Відкриваємо вибраний елемент
+            input.readOnly = false;
+            buttonGroup.classList.remove('hidden');
+            if (togglePasswordBtn) togglePasswordBtn.classList.remove('hidden');
+            input.focus();
+        });
+
+        // Обробник для натискання кнопки "Скасувати"
+        item.querySelector('.cancel-btn').addEventListener('click', () => {
+            input.value = input.dataset.original; // Відновлюємо початкове значення
+            input.readOnly = true; // Вимикаємо редагування
+            buttonGroup.classList.add('hidden'); // Сховуємо кнопки "Зберегти" та "Скасувати"
+            if (togglePasswordBtn) togglePasswordBtn.classList.add('hidden'); // Сховуємо кнопку "Око" для пароля
+        });
+    });
+
+    // Обробка натискання на кнопку перемикання пароля
+    document.querySelectorAll(".toggle-password-btn").forEach((btn) => {
+        btn.classList.add("hidden"); // Спочатку ховаємо кнопку ока
+
+        btn.addEventListener("click", function () {
+            const input = this.closest(".value-container").querySelector(".security-input");
+            const eyeOpen = this.querySelector(".eye-open");
+            const eyeClosed = this.querySelector(".eye-closed");
+
+            if (input.type === "password") {
+                input.type = "text";
+                eyeOpen.classList.remove("hidden");
+                eyeClosed.classList.add("hidden");
+            } else {
+                input.type = "password";
+                eyeOpen.classList.add("hidden");
+                eyeClosed.classList.remove("hidden");
+            }
+        });
+    });
+
+    // Функція для скидання типу input на "password" тільки для паролів
+    function resetPasswordFields() {
+        document.querySelectorAll(".security-input").forEach(input => {
+            if (input.dataset.original && input.type === "text") {
+                input.type = "password";
+            }
+        });
+    }
+
+    // Використовуємо цю функцію після редагування чи скасування, але тільки для паролів
+    document.querySelectorAll(".edit-btn, .cancel-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            resetPasswordFields();
+        });
+    });
+
+    // Збереження пароля в базі
+    const saveBtn = document.querySelector(".save-btn");
+    if (saveBtn) {
+        saveBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const form = e.target.closest("form");
+            const password = form.querySelector(".security-input").value;
+            const originalPassword = form.querySelector(".security-input").dataset.original;
+
+            if (password !== originalPassword) {
+                // Якщо пароль змінився, можна зробити AJAX-запит або відправити форму
+                form.submit();  // Просто відправляємо форму на сервер
+            }
+        });
+    }
+});
+
+</script>
+</body>
+</html>
